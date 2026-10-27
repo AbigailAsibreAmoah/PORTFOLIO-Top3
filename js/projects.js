@@ -59,8 +59,25 @@ window.PORTFOLIO = {
 
   projects: [
     {
-      id: "rightmasters",
+      id: "nurtureville",
       number: "01",
+      category: "Purpose-led",
+      sector: "Nonprofit",
+      name: "Nurture Ville",
+      description:
+        "A website for Nurture Ville, a nonprofit supporting vulnerable people and young people through community outreach. Built around the message “Nurturing Dreams. Inspiring Hope. Empowering People.”, it shares the organisation's story, mission and values, its outreach events, a gallery, and clear ways to volunteer or donate.",
+      tags: ["Nonprofit", "Community", "Events", "Gallery", "Donations"],
+      url: "https://nurture-ville.vercel.app/",
+      layout: "full",
+      panel: { bg: "#2e5d3c", ink: "#f7f4ec" },
+      shots: {
+        desktop: "assets/shots/nurtureville-desktop.jpg",
+        mobile: "assets/shots/nurtureville-mobile.jpg",
+      },
+    },
+    {
+      id: "rightmasters",
+      number: "02",
       category: "Corporate website",
       sector: "Logistics",
       name: "Right Masters Ltd",
@@ -77,7 +94,7 @@ window.PORTFOLIO = {
     },
     {
       id: "heartlink",
-      number: "02",
+      number: "03",
       category: "Digital health",
       sector: "Cardiac care",
       name: "HeartLINK+",
@@ -90,23 +107,6 @@ window.PORTFOLIO = {
       shots: {
         desktop: "assets/shots/heartlink-desktop.jpg",
         mobile: "assets/shots/heartlink-mobile.jpg",
-      },
-    },
-    {
-      id: "nurtureville",
-      number: "03",
-      category: "Purpose-led",
-      sector: "Nonprofit",
-      name: "Nurture Ville",
-      description:
-        "A website for Nurture Ville, a nonprofit supporting vulnerable people and young people through community outreach. Built around the message “Nurturing Dreams. Inspiring Hope. Empowering People.”, it shares the organisation's story, mission and values, its outreach events, a gallery, and clear ways to volunteer or donate.",
-      tags: ["Nonprofit", "Community", "Events", "Gallery", "Donations"],
-      url: "https://nurture-ville.vercel.app/",
-      layout: "full",
-      panel: { bg: "#2e5d3c", ink: "#f7f4ec" },
-      shots: {
-        desktop: "assets/shots/nurtureville-desktop.jpg",
-        mobile: "assets/shots/nurtureville-mobile.jpg",
       },
     },
   ],

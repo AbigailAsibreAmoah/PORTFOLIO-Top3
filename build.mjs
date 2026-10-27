@@ -9,11 +9,12 @@ const read = (p) => readFile(path.join(root, p), "utf8");
 
 let html = await read("index.html");
 
-html = await replaceAsync(html, /<link rel="stylesheet" href="(css\/[^"]+)" \/>/g, async (_, file) => {
+// Asset URLs may carry a ?v= cache-busting suffix; drop it to get the file path.
+html = await replaceAsync(html, /<link rel="stylesheet" href="(css\/[^"?]+)(?:\?[^"]*)?" \/>/g, async (_, file) => {
   return `<style>\n${await read(file)}\n</style>`;
 });
 
-html = await replaceAsync(html, /<script src="(js\/[^"]+)"><\/script>/g, async (_, file) => {
+html = await replaceAsync(html, /<script src="(js\/[^"?]+)(?:\?[^"]*)?"><\/script>/g, async (_, file) => {
   // Guard against a literal closing tag inside inlined scripts.
   const js = (await read(file)).replace(/<\/script/gi, "<\\/script");
   return `<script>\n${js}\n</script>`;

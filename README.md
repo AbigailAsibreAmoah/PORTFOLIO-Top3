@@ -16,20 +16,23 @@ build.mjs             Produces the single-file version
 dist/portfolio-standalone.html   Self-contained build (CSS, JS, favicon and screenshots inlined)
 ```
 
-## Before publishing: replace the placeholders
+## Contact details & placeholders
 
-Open `js/projects.js` and set:
+Contact details live in `js/projects.js`:
 
 ```js
 site: {
-  ownerName: "Your Name",                  // footer
-  email: "you@example.com",                // contact link, copy button and the brief form
-  wordmark: "Portfolio",                   // header wordmark
-  availability: "Taking on new projects",  // hero status line; set to "" to hide it
+  ownerName: "Abigail Amoah & John Yelbert",  // footer
+  people: [                                   // contact section; the brief form emails everyone listed
+    { name: "Abigail Amoah", email: "abigailamoah3@gmail.com", phone: "+233554771170" },
+    { name: "John Yelbert", email: "n.yelbert@gmail.com", phone: "+233548761498" },
+  ],
+  wordmark: "Portfolio",                      // header wordmark
+  availability: "Taking on new projects",     // hero status line; set to "" to hide it
 }
 ```
 
-While the email is still `example.com` or the name is still `Your Name`, a dashed "Placeholder" note shows in the contact section. It disappears automatically once both are set.
+Phone numbers are stored without spaces and displayed in groups (+233 54 876 1498). Each email has a Copy button, and each phone number is a tap-to-call link.
 
 ## Run locally
 

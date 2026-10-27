@@ -100,7 +100,7 @@
       <!-- Services -->
       <section class="services" id="services" aria-labelledby="services-title">
         <header class="section-head reveal">
-          <h2 class="section-title" id="services-title">What I can<br />build for you</h2>
+          <h2 class="section-title" id="services-title">What we can<br />build for you</h2>
           <p class="section-intro">
             Websites for organisations with something worth saying, designed and built end to end, from structure and
             copy hierarchy to the final responsive build.
@@ -136,16 +136,24 @@
           <div class="contact__intro reveal">
             <h2 class="contact__title" id="contact-title">Got a good idea?<br /><span>Let's build it.</span></h2>
             <p class="contact__text">
-              Tell me a little about the project. This form writes the email for you; nothing is sent until you press
+              Tell us a little about the project. This form writes the email for you; nothing is sent until you press
               send in your own mail app.
             </p>
             <div class="contact__direct">
-              <span class="contact__direct-label">Or email directly</span>
-              <a class="contact__email" href="mailto:you@example.com" data-site="email"><span data-site="email-text">you@example.com</span></a>
-              <button class="copy-btn" type="button" data-copy-email>Copy</button>
+              <ul class="contact__people" data-contact-people>
+                <li class="person">
+                  <h3 class="person__name">Abigail Amoah</h3>
+                  <a class="contact__email" href="mailto:abigailamoah3@gmail.com">abigailamoah3@gmail.com</a>
+                  <a class="contact__phone" href="tel:+233554771170">+233 55 477 1170</a>
+                </li>
+                <li class="person">
+                  <h3 class="person__name">John Yelbert</h3>
+                  <a class="contact__email" href="mailto:n.yelbert@gmail.com">n.yelbert@gmail.com</a>
+                  <a class="contact__phone" href="tel:+233548761498">+233 54 876 1498</a>
+                </li>
+              </ul>
               <span class="sr-only" role="status" aria-live="polite" data-copy-status></span>
             </div>
-            <p class="placeholder-note" data-placeholder-note>Placeholder: set your name and email in <code>js/projects.js</code>.</p>
           </div>
 
           <form class="brief reveal" data-brief novalidate>
@@ -171,7 +179,7 @@
             </div>
 
             <label class="brief__field">
-              <span class="brief__label">Tell me about it</span>
+              <span class="brief__label">Tell us about it</span>
               <textarea name="message" rows="4" placeholder="What are you building, and who is it for?"></textarea>
             </label>
 

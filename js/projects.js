@@ -11,9 +11,12 @@
  */
 window.PORTFOLIO = {
   site: {
-    // Placeholders – replace with your own details before publishing.
-    ownerName: "Your Name",
-    email: "you@example.com",
+    ownerName: "Abigail Amoah & John Yelbert",
+    // Listed in the contact section; the brief form addresses its email to everyone here.
+    people: [
+      { name: "Abigail Amoah", email: "abigailamoah3@gmail.com", phone: "+233554771170" },
+      { name: "John Yelbert", email: "n.yelbert@gmail.com", phone: "+233548761498" },
+    ],
     wordmark: "Portfolio",
     // Shown in the hero with a live dot. Set to "" to hide it.
     availability: "Taking on new projects",
@@ -30,7 +33,7 @@ window.PORTFOLIO = {
     "Redesigns",
   ],
 
-  // "What I can build for you" – each links to the project that shows it.
+  // "What we can build for you" – each links to the project that shows it.
   capabilities: [
     {
       title: "Company websites",

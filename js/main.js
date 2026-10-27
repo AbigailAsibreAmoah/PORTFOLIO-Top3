@@ -13,6 +13,17 @@
 
   const projectById = (id) => data.projects.find((p) => p.id === id);
 
+  // "+233548761498" -> "+233 54 876 1498": country code, then groups of 3 with a final 4.
+  function formatPhone(raw) {
+    const digits = raw.replace(/\D/g, "");
+    if (!raw.startsWith("+233") || digits.length < 9) return raw;
+    const local = digits.slice(3);
+    const tail = local.slice(-4);
+    const head = local.slice(0, -4);
+    const groups = head.length > 3 ? [head.slice(0, head.length - 3), head.slice(-3)] : [head];
+    return `+233 ${[...groups, tail].join(" ")}`;
+  }
+
   /* ---------- Site details ---------- */
 
   function renderSiteDetails() {
@@ -24,14 +35,22 @@
     set("availability", site.availability || "");
     document.querySelectorAll("[data-availability]").forEach((el) => (el.hidden = !site.availability));
 
-    const email = document.querySelector("a[data-site='email']");
-    if (email) {
-      email.href = `mailto:${site.email}`;
-      email.querySelector("[data-site='email-text']").textContent = site.email;
+    const people = document.querySelector("[data-contact-people]");
+    if (people) {
+      people.innerHTML = site.people
+        .map(
+          (person) => `
+          <li class="person">
+            <h3 class="person__name">${escapeHtml(person.name)}</h3>
+            <span class="person__line">
+              <a class="contact__email" href="mailto:${escapeHtml(person.email)}">${escapeHtml(person.email)}</a>
+              <button class="copy-btn" type="button" data-copy="${escapeHtml(person.email)}">Copy<span class="sr-only"> ${escapeHtml(person.email)}</span></button>
+            </span>
+            <a class="contact__phone" href="tel:${escapeHtml(person.phone.replace(/[^\d+]/g, ""))}">${escapeHtml(formatPhone(person.phone))}</a>
+          </li>`
+        )
+        .join("");
     }
-    // Flag the contact details while they are still the defaults.
-    const isPlaceholder = /example\.com$/i.test(site.email) || site.ownerName === "Your Name";
-    document.querySelectorAll("[data-placeholder-note]").forEach((el) => (el.hidden = !isPlaceholder));
     document.querySelectorAll("[data-project-count]").forEach((el) => {
       el.textContent = String(data.projects.length).padStart(2, "0");
     });
@@ -198,32 +217,32 @@
           "",
           name ? `Thanks,\n${name}${org ? `\n${org}` : ""}` : "Thanks",
         ].join("\n");
-        window.location.href = `mailto:${data.site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:${data.site.people.map((p) => p.email).join(",")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       });
     }
 
-    const copy = document.querySelector("[data-copy-email]");
     const status = document.querySelector("[data-copy-status]");
-    if (copy) {
+    document.querySelectorAll("[data-copy]").forEach((copy) => {
       if (!navigator.clipboard) {
         copy.hidden = true;
         return;
       }
+      const label = copy.innerHTML;
       copy.addEventListener("click", async () => {
         try {
-          await navigator.clipboard.writeText(data.site.email);
+          await navigator.clipboard.writeText(copy.dataset.copy);
           copy.textContent = "Copied";
-          status.textContent = "Email address copied to clipboard";
+          status.textContent = `${copy.dataset.copy} copied to clipboard`;
         } catch {
           copy.textContent = "Copy failed";
           status.textContent = "Could not copy the email address";
         }
         setTimeout(() => {
-          copy.textContent = "Copy";
+          copy.innerHTML = label;
           status.textContent = "";
         }, 2000);
       });
-    }
+    });
   }
 
   /* ---------- Navigation ---------- */

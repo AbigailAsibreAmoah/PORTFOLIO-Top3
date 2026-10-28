@@ -2110,7 +2110,7 @@ window.PORTFOLIO = {
     return `
       <article class="project project--${p.layout} reveal" id="project-${p.id}" style="${style}" aria-labelledby="project-${p.id}-title">
         <div class="project__stage" aria-hidden="true">
-          <span class="project__domain"><span class="status-dot"></span>${escapeHtml(host)}</span>
+          <span class="project__domain">${escapeHtml(host)}</span>
           <div class="frame frame--desktop">
             <div class="frame__bar"><i></i><i></i><i></i><span>${escapeHtml(p.url)}</span></div>
             <div class="frame__screen" data-scroll-screen>

@@ -294,6 +294,19 @@ section[id] {
   max-width: 46ch;
 }
 
+/* A quiet aside that sits under a section title. */
+.section-note {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+@media (min-width: 900px) {
+  .section-note {
+    justify-self: end;
+  }
+}
+
 /* Scroll reveal: only hide content once JS is confirmed to run. */
 .js .reveal {
   opacity: 0;

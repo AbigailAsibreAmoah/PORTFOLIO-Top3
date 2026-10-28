@@ -311,6 +311,19 @@ section[id] {
   max-width: 46ch;
 }
 
+/* A quiet aside that sits under a section title. */
+.section-note {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+@media (min-width: 900px) {
+  .section-note {
+    justify-self: end;
+  }
+}
+
 /* Scroll reveal: only hide content once JS is confirmed to run. */
 .js .reveal {
   opacity: 0;
@@ -1713,7 +1726,7 @@ section[id] {
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__inner">
           <nav class="peek reveal" aria-label="Recent projects">
-            <span class="peek__label">Recent</span>
+            <span class="peek__label">Top picks</span>
             <ul class="peek__list" data-peek></ul>
             <span class="peek__rule" aria-hidden="true"></span>
             <span class="peek__count" aria-hidden="true">(<span data-project-count>03</span>)</span>
@@ -1746,6 +1759,7 @@ section[id] {
       <section class="work" id="work" aria-labelledby="work-title">
         <header class="section-head reveal">
           <h2 class="section-title" id="work-title">Selected<br />work <sup data-project-count>03</sup></h2>
+          <p class="section-note">Top three, from a wider body of work.</p>
         </header>
 
         <div class="work__grid" data-projects>

@@ -1578,8 +1578,7 @@ section[id] {
   align-items: center;
   justify-content: space-between;
   gap: 16px 32px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--line-dark);
+  padding-bottom: 32px;
   color: var(--on-dark-muted);
 }
 
@@ -1614,22 +1613,6 @@ section[id] {
 .back-to-top:hover {
   background: var(--on-dark);
   color: var(--ink);
-}
-
-.site-footer__big {
-  margin: 0.06em 0 -0.18em;
-  font-weight: 700;
-  font-size: 12.6vw;
-  line-height: 1;
-  letter-spacing: -0.065em;
-  white-space: nowrap;
-  color: var(--on-dark);
-}
-
-@media (min-width: 1480px) {
-  .site-footer__big {
-    font-size: calc(var(--max) * 0.122);
-  }
 }
 
 /* ==========================================================================

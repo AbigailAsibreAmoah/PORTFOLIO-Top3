@@ -47,11 +47,12 @@
       <!-- Hero -->
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__inner">
-          <div class="hero__top reveal">
-            <p>Web design &amp; development</p>
-            <p class="hero__top-mid">Selected work, <span data-project-count>03</span> projects</p>
-            <p class="hero__top-end" data-availability><span class="status-dot" aria-hidden="true"></span><span data-site="availability"></span></p>
-          </div>
+          <nav class="peek reveal" aria-label="Recent projects">
+            <span class="peek__label">Recent</span>
+            <ul class="peek__list" data-peek></ul>
+            <span class="peek__rule" aria-hidden="true"></span>
+            <span class="peek__count" aria-hidden="true">(<span data-project-count>03</span>)</span>
+          </nav>
 
           <h1 class="hero__title reveal" id="hero-title">
             <span class="hero__line">Good ideas.<span class="hero__thumb" data-hero-thumb aria-hidden="true"></span></span>
@@ -80,10 +81,6 @@
       <section class="work" id="work" aria-labelledby="work-title">
         <header class="section-head reveal">
           <h2 class="section-title" id="work-title">Selected<br />work <sup data-project-count>03</sup></h2>
-          <p class="section-intro">
-            A nonprofit that needs to feel warm, a logistics company that needs to read as dependable, and a cardiac-care
-            platform that needs to feel trustworthy. Three briefs, three distinct identities.
-          </p>
         </header>
 
         <div class="work__grid" data-projects>

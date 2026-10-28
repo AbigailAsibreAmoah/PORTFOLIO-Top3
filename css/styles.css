@@ -511,40 +511,110 @@ section[id] {
   padding: 8px var(--gutter) clamp(48px, 7vw, 96px);
 }
 
-.hero__top {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 6px;
-  padding: 14px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+/* Recent-project pills above the headline; the thumbnail opens up on hover. */
+.peek {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 6px;
+}
+
+.peek__label,
+.peek__count {
+  flex-shrink: 0;
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--muted);
 }
 
-.hero__top-end {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--ink);
+.peek__list {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 2px;
+  overflow-x: auto;
+  list-style: none;
+  scrollbar-width: none;
 }
 
-.hero__top-end[hidden] {
+.peek__list::-webkit-scrollbar {
   display: none;
 }
 
-@media (min-width: 700px) {
-  .hero__top {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+.peek__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 16px 5px 5px;
+  border-radius: var(--pill);
+  background: var(--panel);
+  color: var(--panel-ink);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.4s var(--ease);
+}
 
-  .hero__top-mid {
-    text-align: center;
-  }
+.peek__thumb {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  overflow: hidden;
+  border-radius: var(--pill);
+  background: rgba(255, 255, 255, 0.2);
+  transition: width 0.5s var(--ease);
+}
 
-  .hero__top-end {
-    justify-self: end;
+.peek__thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transform: scale(1.6);
+  transform-origin: top center;
+  transition: transform 0.5s var(--ease);
+}
+
+.peek__name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.peek__sector {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.peek__item:hover .peek__thumb,
+.peek__item:focus-visible .peek__thumb {
+  width: 84px;
+}
+
+.peek__item:hover .peek__thumb img,
+.peek__item:focus-visible .peek__thumb img {
+  transform: scale(1);
+}
+
+.peek__item:active {
+  transform: scale(0.97);
+}
+
+.peek__rule {
+  flex: 1;
+  min-width: 24px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+@media (max-width: 699px) {
+  .peek__label,
+  .peek__rule,
+  .peek__count,
+  .peek__sector {
+    display: none;
   }
 }
 

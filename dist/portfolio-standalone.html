@@ -528,40 +528,110 @@ section[id] {
   padding: 8px var(--gutter) clamp(48px, 7vw, 96px);
 }
 
-.hero__top {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 6px;
-  padding: 14px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+/* Recent-project pills above the headline; the thumbnail opens up on hover. */
+.peek {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 6px;
+}
+
+.peek__label,
+.peek__count {
+  flex-shrink: 0;
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--muted);
 }
 
-.hero__top-end {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--ink);
+.peek__list {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 2px;
+  overflow-x: auto;
+  list-style: none;
+  scrollbar-width: none;
 }
 
-.hero__top-end[hidden] {
+.peek__list::-webkit-scrollbar {
   display: none;
 }
 
-@media (min-width: 700px) {
-  .hero__top {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+.peek__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 16px 5px 5px;
+  border-radius: var(--pill);
+  background: var(--panel);
+  color: var(--panel-ink);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.4s var(--ease);
+}
 
-  .hero__top-mid {
-    text-align: center;
-  }
+.peek__thumb {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  overflow: hidden;
+  border-radius: var(--pill);
+  background: rgba(255, 255, 255, 0.2);
+  transition: width 0.5s var(--ease);
+}
 
-  .hero__top-end {
-    justify-self: end;
+.peek__thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transform: scale(1.6);
+  transform-origin: top center;
+  transition: transform 0.5s var(--ease);
+}
+
+.peek__name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.peek__sector {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.peek__item:hover .peek__thumb,
+.peek__item:focus-visible .peek__thumb {
+  width: 84px;
+}
+
+.peek__item:hover .peek__thumb img,
+.peek__item:focus-visible .peek__thumb img {
+  transform: scale(1);
+}
+
+.peek__item:active {
+  transform: scale(0.97);
+}
+
+.peek__rule {
+  flex: 1;
+  min-width: 24px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+@media (max-width: 699px) {
+  .peek__label,
+  .peek__rule,
+  .peek__count,
+  .peek__sector {
+    display: none;
   }
 }
 
@@ -1659,11 +1729,12 @@ section[id] {
       <!-- Hero -->
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__inner">
-          <div class="hero__top reveal">
-            <p>Web design &amp; development</p>
-            <p class="hero__top-mid">Selected work, <span data-project-count>03</span> projects</p>
-            <p class="hero__top-end" data-availability><span class="status-dot" aria-hidden="true"></span><span data-site="availability"></span></p>
-          </div>
+          <nav class="peek reveal" aria-label="Recent projects">
+            <span class="peek__label">Recent</span>
+            <ul class="peek__list" data-peek></ul>
+            <span class="peek__rule" aria-hidden="true"></span>
+            <span class="peek__count" aria-hidden="true">(<span data-project-count>03</span>)</span>
+          </nav>
 
           <h1 class="hero__title reveal" id="hero-title">
             <span class="hero__line">Good ideas.<span class="hero__thumb" data-hero-thumb aria-hidden="true"></span></span>
@@ -1692,10 +1763,6 @@ section[id] {
       <section class="work" id="work" aria-labelledby="work-title">
         <header class="section-head reveal">
           <h2 class="section-title" id="work-title">Selected<br />work <sup data-project-count>03</sup></h2>
-          <p class="section-intro">
-            A nonprofit that needs to feel warm, a logistics company that needs to read as dependable, and a cardiac-care
-            platform that needs to feel trustworthy. Three briefs, three distinct identities.
-          </p>
         </header>
 
         <div class="work__grid" data-projects>
@@ -2227,6 +2294,25 @@ window.PORTFOLIO = {
     });
   }
 
+  /* ---------- Hero project pills ---------- */
+
+  function renderPeek() {
+    const list = document.querySelector("[data-peek]");
+    if (!list) return;
+    list.innerHTML = data.projects
+      .map(
+        (p) => `
+        <li>
+          <a class="peek__item" href="#project-${p.id}" style="--panel:${p.panel.bg};--panel-ink:${p.panel.ink}">
+            <span class="peek__thumb"><img src="${escapeHtml(p.shots.desktop)}" alt="" loading="lazy" decoding="async" /></span>
+            <span class="peek__name">${escapeHtml(p.name)}</span>
+            <span class="peek__sector">${escapeHtml(p.sector)}</span>
+          </a>
+        </li>`
+      )
+      .join("");
+  }
+
   /* ---------- Scroll reveal ---------- */
 
   function setupReveal() {
@@ -2253,6 +2339,7 @@ window.PORTFOLIO = {
   setupHeroThumb();
   renderTicker();
   renderProjects();
+  renderPeek();
   renderCapabilities();
   measureScreens();
   setupCursor();

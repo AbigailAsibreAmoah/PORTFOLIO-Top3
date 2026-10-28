@@ -291,6 +291,25 @@
     });
   }
 
+  /* ---------- Hero project pills ---------- */
+
+  function renderPeek() {
+    const list = document.querySelector("[data-peek]");
+    if (!list) return;
+    list.innerHTML = data.projects
+      .map(
+        (p) => `
+        <li>
+          <a class="peek__item" href="#project-${p.id}" style="--panel:${p.panel.bg};--panel-ink:${p.panel.ink}">
+            <span class="peek__thumb"><img src="${escapeHtml(p.shots.desktop)}" alt="" loading="lazy" decoding="async" /></span>
+            <span class="peek__name">${escapeHtml(p.name)}</span>
+            <span class="peek__sector">${escapeHtml(p.sector)}</span>
+          </a>
+        </li>`
+      )
+      .join("");
+  }
+
   /* ---------- Scroll reveal ---------- */
 
   function setupReveal() {
@@ -317,6 +336,7 @@
   setupHeroThumb();
   renderTicker();
   renderProjects();
+  renderPeek();
   renderCapabilities();
   measureScreens();
   setupCursor();

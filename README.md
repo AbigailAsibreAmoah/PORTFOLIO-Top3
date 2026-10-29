@@ -1,6 +1,6 @@
 # Portfolio — Good ideas. Thoughtfully built.
 
-A three-project portfolio site featuring Right Masters Ltd, HeartLINK+ and Nurture Ville.
+A four-project portfolio site featuring Right Masters Ltd, HeartLINK+, Nurture Ville and The Surprise Groove.
 Plain HTML, CSS and JavaScript: no framework, and nothing to install to run it. The only external dependency is the Archivo font from Google Fonts, with system fallbacks.
 
 ## Structure
@@ -70,7 +70,7 @@ It is a static site, so any static host works:
 ## Interactions
 
 - **Project frames:** hovering a project, or focusing its link, scrolls the desktop screenshot through the real site and lifts the phone. On mouse-driven devices a "Visit site" label follows the pointer.
-- **Hero thumbnail:** a small window in the headline cycles through the three projects.
+- **Hero thumbnail:** a small window in the headline cycles through the four projects.
 - **Contact form:** it builds a pre-filled email (subject and body) and opens it in the visitor's mail app. It has no backend and sends nothing by itself. "Copy" puts the email address on the clipboard.
 
 ## Accessibility & motion

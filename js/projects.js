@@ -109,5 +109,22 @@ window.PORTFOLIO = {
         mobile: "assets/shots/rightmasters-mobile.jpg",
       },
     },
+    {
+      id: "surprisegroove",
+      number: "04",
+      category: "Online store",
+      sector: "Gifting & events",
+      name: "The Surprise Groove",
+      description:
+        "A self-service online store for The Surprise Groove Ghana, which plans birthday, graduation and surprise packages and décor setups. Styled as a wrapped gift, it lets visitors pick a package, add extras like balloons, cakes and flowers, give delivery details, and finish the order by mobile money or bank transfer with a reference sent on WhatsApp.",
+      tags: ["E-commerce", "Gifting", "Order flow", "WhatsApp", "Responsive"],
+      url: "https://surprise-groove.vercel.app/",
+      layout: "full",
+      panel: { bg: "#b72769", ink: "#f9e4e8" },
+      shots: {
+        desktop: "assets/shots/surprisegroove-desktop.jpg",
+        mobile: "assets/shots/surprisegroove-mobile.jpg",
+      },
+    },
   ],
 };

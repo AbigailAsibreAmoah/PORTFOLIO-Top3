@@ -67,7 +67,7 @@ window.PORTFOLIO = {
       description:
         "A website for Nurture Ville, a nonprofit supporting vulnerable people and young people through community outreach. Built around the message “Nurturing Dreams. Inspiring Hope. Empowering People.”, it shares the organisation's story, mission and values, its outreach events, a gallery, and clear ways to volunteer or donate.",
       tags: ["Nonprofit", "Community", "Events", "Gallery", "Donations"],
-      url: "https://nurture-ville.vercel.app/",
+      url: "https://nurtureville.org/",
       layout: "full",
       panel: { bg: "#2e5d3c", ink: "#f7f4ec" },
       shots: {
